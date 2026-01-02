@@ -19,7 +19,7 @@ const Header = () => {
     { href: '#o-que-fazemos', label: 'O que fazemos' },
     { href: '#abordagem', label: 'Abordagem' },
     { href: '#para-quem', label: 'Para quem' },
-    { href: '#contato', label: 'Contato' },
+    { href: '#newsletter', label: 'Newsletter' },
   ];
 
   return (
@@ -50,7 +50,7 @@ const Header = () => {
         {/* CTA Button */}
         <div className="hidden md:block">
           <a
-            href="#contato"
+            href="#newsletter"
             className="inline-flex items-center justify-center px-5 py-2.5 rounded-sm bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
           >
             Fale conosco
@@ -86,7 +86,7 @@ const Header = () => {
               </a>
             ))}
             <a
-              href="#contato"
+              href="#newsletter"
               onClick={() => setIsMobileMenuOpen(false)}
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-sm bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity mt-2"
             >
