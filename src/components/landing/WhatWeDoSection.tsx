@@ -1,5 +1,4 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { ArrowRight } from 'lucide-react';
 import conceptClarity from '@/assets/concept-clarity.png';
 import conceptStructure from '@/assets/concept-structure.png';
 import conceptData from '@/assets/concept-data.png';
@@ -89,15 +88,9 @@ const WhatWeDoSection = () => {
               </h3>
 
               {/* Description */}
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground">
                 {card.description}
               </p>
-
-              {/* Link */}
-              <a href="#contato" className="link-arrow text-sm">
-                Saiba mais
-                <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
           ))}
         </div>

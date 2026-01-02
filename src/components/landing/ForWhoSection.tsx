@@ -1,5 +1,4 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { ArrowRight } from 'lucide-react';
 import conceptNetwork from '@/assets/concept-network.png';
 import conceptStructure from '@/assets/concept-structure.png';
 import conceptClarity from '@/assets/concept-clarity.png';
@@ -78,16 +77,9 @@ const ForWhoSection = () => {
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 tracking-tight">
                       {audience.title}
                     </h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                    <p className="text-lg text-muted-foreground leading-relaxed">
                       {audience.description}
                     </p>
-                    <a 
-                      href="#contato" 
-                      className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-300 group"
-                    >
-                      Saiba mais
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </a>
                   </div>
 
                   {/* Image */}
