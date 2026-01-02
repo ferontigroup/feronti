@@ -50,7 +50,7 @@ const Header = () => {
         {/* CTA Button */}
         <div className="hidden md:block">
           <a
-            href="#newsletter"
+            href="/contato"
             className="inline-flex items-center justify-center px-5 py-2.5 rounded-sm bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
           >
             Fale conosco
@@ -86,7 +86,7 @@ const Header = () => {
               </a>
             ))}
             <a
-              href="#newsletter"
+              href="/contato"
               onClick={() => setIsMobileMenuOpen(false)}
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-sm bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity mt-2"
             >
