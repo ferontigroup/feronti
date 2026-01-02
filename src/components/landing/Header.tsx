@@ -16,10 +16,10 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: '#o-que-fazemos', label: 'O que fazemos' },
-    { href: '#abordagem', label: 'Abordagem' },
-    { href: '#para-quem', label: 'Para quem' },
-    { href: '#newsletter', label: 'Newsletter' },
+    { href: '/#o-que-fazemos', label: 'O que fazemos' },
+    { href: '/#abordagem', label: 'Abordagem' },
+    { href: '/#para-quem', label: 'Para quem' },
+    { href: '/#newsletter', label: 'Newsletter' },
   ];
 
   return (
@@ -30,7 +30,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img src={logoPreta} alt="Feronti" className="h-7" />
         </a>
 
