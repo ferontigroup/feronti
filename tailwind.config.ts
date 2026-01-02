@@ -72,8 +72,7 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
-        body: ['Inter', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
