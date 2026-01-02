@@ -1,4 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import conceptNetwork from '@/assets/concept-network.png';
 
 const HowWeHelpSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -49,6 +50,22 @@ const HowWeHelpSection = () => {
               Visão de Negócio
             </span>
           </div>
+        </div>
+      </div>
+
+      {/* Concept image */}
+      <div 
+        className={`container px-6 mb-16 transition-all duration-1000 delay-300 ${
+          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+        }`}
+      >
+        <div className="max-w-3xl mx-auto">
+          <img 
+            src={conceptNetwork} 
+            alt="Visualização de rede digital" 
+            className="w-full h-auto rounded-2xl"
+            loading="lazy"
+          />
         </div>
       </div>
 
