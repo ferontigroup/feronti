@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Check, ArrowRight } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { contactSchema } from '@/lib/validations/contact';
+import { useToast } from '@/hooks/use-toast';
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -8,16 +11,56 @@ const ContactSection = () => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
+  const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
+
+    // Validar com Zod
+    const result = contactSchema.safeParse({ name, email });
+    if (!result.success) {
+      const fieldErrors: { name?: string; email?: string } = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0] === 'name') fieldErrors.name = err.message;
+        if (err.path[0] === 'email') fieldErrors.email = err.message;
+      });
+      setErrors(fieldErrors);
+      return;
+    }
+
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsLoading(false);
-    setIsSubmitted(true);
+    try {
+      const { error } = await supabase
+        .from('leads')
+        .insert({ name: result.data.name, email: result.data.email });
+
+      if (error) {
+        if (error.code === '23505') {
+          toast({
+            title: 'Você já está cadastrado',
+            description: 'Este email já está na nossa lista de atualizações.',
+            variant: 'default',
+          });
+        } else {
+          throw error;
+        }
+        setIsLoading(false);
+        return;
+      }
+
+      setIsSubmitted(true);
+    } catch (error) {
+      toast({
+        title: 'Erro ao cadastrar',
+        description: 'Tente novamente em alguns instantes.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -63,8 +106,13 @@ const ContactSection = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
-                        className="w-full h-12 px-4 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className={`w-full h-12 px-4 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
+                          errors.name ? 'border-destructive' : 'border-border'
+                        }`}
                       />
+                      {errors.name && (
+                        <p className="text-sm text-destructive mt-1">{errors.name}</p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium mb-2">
@@ -77,8 +125,13 @@ const ContactSection = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
-                        className="w-full h-12 px-4 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className={`w-full h-12 px-4 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
+                          errors.email ? 'border-destructive' : 'border-border'
+                        }`}
                       />
+                      {errors.email && (
+                        <p className="text-sm text-destructive mt-1">{errors.email}</p>
+                      )}
                     </div>
                     <button
                       type="submit"
