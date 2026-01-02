@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import logoPreta from '@/assets/logo-preta.svg';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,9 +31,7 @@ const Header = () => {
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center">
-          <span className="text-xl font-bold tracking-tight">
-            Fer<span className="text-primary">onti</span>
-          </span>
+          <img src={logoPreta} alt="Feronti" className="h-7" />
         </a>
 
         {/* Desktop Navigation */}

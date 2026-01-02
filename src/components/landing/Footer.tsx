@@ -1,3 +1,5 @@
+import logoBranca from '@/assets/logo-branca.svg';
+
 const Footer = () => {
   return (
     <footer className="py-16 section-gradient-dark border-t border-white/10">
@@ -6,9 +8,7 @@ const Footer = () => {
           {/* Logo and description */}
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-12">
             <div className="max-w-sm">
-              <span className="text-2xl font-bold tracking-tight text-white">
-                Fer<span className="text-primary">onti</span>
-              </span>
+              <img src={logoBranca} alt="Feronti" className="h-8" />
               <p className="text-muted-dark text-sm mt-4 leading-relaxed">
                 Clareza estratégica para decisões em performance digital.
               </p>
