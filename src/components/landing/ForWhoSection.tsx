@@ -1,66 +1,67 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Building2, Users, Award } from 'lucide-react';
 
 const ForWhoSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   const audiences = [
     {
-      icon: Building2,
       title: 'Organizações',
       description: 'Que precisam estruturar a leitura de mídia e performance antes de escalar investimentos.'
     },
     {
-      icon: Users,
       title: 'Times de mídia',
       description: 'Que operam mídia paga em ambientes complexos e precisam alinhar entendimento, critério e decisão.'
     },
     {
-      icon: Award,
       title: 'Lideranças',
       description: 'Que não precisam aprender ferramentas, mas precisam compreender o que está acontecendo para decidir melhor.'
     }
   ];
 
   return (
-    <section id="para-quem" className="py-24 bg-gradient-subtle relative overflow-hidden">
-      <div className="absolute inset-0 pattern-grid opacity-20" />
-      
-      <div ref={ref} className="container relative z-10 px-6">
+    <section id="para-quem" className="py-24 md:py-32 section-light">
+      <div ref={ref} className="container px-6">
         <div className="max-w-5xl mx-auto">
-          {/* Section header */}
-          <div className={`text-center mb-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <span className="text-primary text-sm font-medium tracking-wider uppercase font-body">
-              Para quem faz sentido
-            </span>
-          </div>
+          <h3 
+            className={`text-sm font-medium text-primary uppercase tracking-widest mb-6 transition-all duration-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            Para quem faz sentido
+          </h3>
 
-          <h2 className={`font-display text-3xl md:text-4xl font-semibold text-center mb-8 max-w-3xl mx-auto transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h2 
+            className={`text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-[hsl(var(--foreground-light))] leading-tight mb-6 transition-all duration-700 delay-100 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             Contextos onde a complexidade da mídia paga dificulta a tomada de decisão
           </h2>
 
+          <p 
+            className={`text-lg text-light-muted mb-12 transition-all duration-700 delay-200 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            Faz sentido para:
+          </p>
+
           {/* Audience cards */}
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
+          <div className="grid md:grid-cols-3 gap-8">
             {audiences.map((audience, index) => (
               <div
                 key={audience.title}
-                className={`group relative p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-500 overflow-hidden ${
+                className={`p-6 rounded-2xl bg-[hsl(0_0%_94%)] transition-all duration-700 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
-                style={{ transitionDelay: `${(index + 2) * 150}ms` }}
+                style={{ transitionDelay: `${(index + 3) * 100}ms` }}
               >
-                {/* Hover glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="relative">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
-                    <audience.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="font-display text-xl font-semibold mb-4">{audience.title}</h3>
-                  <p className="text-muted-foreground font-body leading-relaxed">
-                    {audience.description}
-                  </p>
-                </div>
+                <h4 className="text-xl font-semibold text-[hsl(var(--foreground-light))] mb-3">
+                  {audience.title}
+                </h4>
+                <p className="text-light-muted leading-relaxed">
+                  {audience.description}
+                </p>
               </div>
             ))}
           </div>
