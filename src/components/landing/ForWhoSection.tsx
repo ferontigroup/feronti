@@ -92,14 +92,14 @@ const ForWhoSection = () => {
 
                   {/* Image */}
                   <div className={`${isReversed ? 'md:order-1' : 'md:order-2'}`}>
-                    <div className="relative overflow-hidden rounded-2xl aspect-[16/10] bg-gradient-to-br from-primary/5 via-accent/10 to-primary/5">
+                    <div className="relative overflow-hidden rounded-2xl aspect-[16/10] bg-gradient-to-br from-primary/5 via-accent/10 to-primary/5 group cursor-pointer">
                       <img 
                         src={audience.image} 
                         alt={audience.imageAlt}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                       />
                       {/* Subtle gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 pointer-events-none transition-opacity duration-500 group-hover:opacity-70" />
                     </div>
                   </div>
                 </div>
