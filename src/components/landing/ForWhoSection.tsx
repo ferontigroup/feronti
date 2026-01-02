@@ -1,33 +1,39 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Building2, Users, UserCog, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import conceptNetwork from '@/assets/concept-network.png';
+import conceptStructure from '@/assets/concept-structure.png';
+import conceptClarity from '@/assets/concept-clarity.png';
 
 const ForWhoSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   const audiences = [
     {
-      icon: Building2,
       title: 'Organizações',
-      description: 'Que precisam estruturar a leitura de mídia e performance antes de escalar investimentos.'
+      description: 'Que precisam estruturar a leitura de mídia e performance antes de escalar investimentos.',
+      image: conceptNetwork,
+      imageAlt: 'Rede de dados conectados representando organizações'
     },
     {
-      icon: Users,
       title: 'Times de mídia',
-      description: 'Que operam mídia paga em ambientes complexos e precisam alinhar entendimento, critério e decisão.'
+      description: 'Que operam mídia paga em ambientes complexos e precisam alinhar entendimento, critério e decisão.',
+      image: conceptStructure,
+      imageAlt: 'Estrutura de dados representando times de mídia'
     },
     {
-      icon: UserCog,
       title: 'Lideranças',
-      description: 'Que não precisam aprender ferramentas, mas precisam compreender o que está acontecendo para decidir melhor.'
+      description: 'Que não precisam aprender ferramentas, mas precisam compreender o que está acontecendo para decidir melhor.',
+      image: conceptClarity,
+      imageAlt: 'Clareza visual representando lideranças'
     }
   ];
 
   return (
     <section id="para-quem" className="py-20 md:py-28 section-gray">
       <div ref={ref} className="container px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <span 
               className={`badge-primary mb-6 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -54,40 +60,51 @@ const ForWhoSection = () => {
             </p>
           </div>
 
-          {/* Audience cards - horizontal layout */}
-          <div className="space-y-4">
-            {audiences.map((audience, index) => (
-              <div
-                key={audience.title}
-                className={`card-elevated p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${(index + 3) * 100}ms` }}
-              >
-                {/* Icon */}
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <audience.icon className="w-7 h-7 text-primary" />
-                </div>
-
-                {/* Content */}
-                <div className="flex-1">
-                  <h4 className="text-xl font-semibold mb-2">
-                    {audience.title}
-                  </h4>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {audience.description}
-                  </p>
-                </div>
-
-                {/* Arrow */}
-                <a 
-                  href="#contato" 
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors flex-shrink-0"
+          {/* Zigzag Layout */}
+          <div className="space-y-16 md:space-y-24">
+            {audiences.map((audience, index) => {
+              const isReversed = index % 2 === 1;
+              
+              return (
+                <div
+                  key={audience.title}
+                  className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center transition-all duration-700 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ transitionDelay: `${(index + 3) * 150}ms` }}
                 >
-                  <ArrowRight className="w-5 h-5" />
-                </a>
-              </div>
-            ))}
+                  {/* Text Content */}
+                  <div className={`${isReversed ? 'md:order-2' : 'md:order-1'}`}>
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 tracking-tight">
+                      {audience.title}
+                    </h3>
+                    <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                      {audience.description}
+                    </p>
+                    <a 
+                      href="#contato" 
+                      className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-300 group"
+                    >
+                      Saiba mais
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+
+                  {/* Image */}
+                  <div className={`${isReversed ? 'md:order-1' : 'md:order-2'}`}>
+                    <div className="relative overflow-hidden rounded-2xl aspect-[16/10] bg-gradient-to-br from-primary/5 via-accent/10 to-primary/5">
+                      <img 
+                        src={audience.image} 
+                        alt={audience.imageAlt}
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Subtle gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 pointer-events-none" />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
