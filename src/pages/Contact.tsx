@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ArrowRight, CheckCircle, Loader2, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowRight, CheckCircle, Loader2, Sparkles, Target } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { contactSchema, type ContactFormData } from '@/lib/validations/contact';
 import Header from '@/components/landing/Header';
@@ -109,27 +109,24 @@ const Contact = () => {
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                        <Mail className="w-5 h-5 text-primary" />
+                        <Target className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold mb-1">Email</h3>
-                        <a
-                          href="mailto:ferontigroup@gmail.com"
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          ferontigroup@gmail.com
-                        </a>
+                        <h3 className="font-semibold mb-1">Resultados mensuráveis</h3>
+                        <p className="text-muted-foreground">
+                          Decisões baseadas em dados reais, não em suposições
+                        </p>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                        <MapPin className="w-5 h-5 text-primary" />
+                        <Sparkles className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold mb-1">Localização</h3>
+                        <h3 className="font-semibold mb-1">Parceria estratégica</h3>
                         <p className="text-muted-foreground">
-                          São Paulo, SP - Brasil
+                          Trabalhamos lado a lado para escalar seu negócio
                         </p>
                       </div>
                     </div>
