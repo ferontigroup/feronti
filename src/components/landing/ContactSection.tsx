@@ -64,7 +64,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contato" className="py-20 md:py-28 section-light">
+    <section id="newsletter" className="py-20 md:py-28 section-light">
       <div ref={ref} className="container px-6">
         <div className="max-w-5xl mx-auto">
           {!isSubmitted ? (
@@ -76,7 +76,7 @@ const ContactSection = () => {
                 }`}
               >
                 <span className="badge-primary mb-6">
-                  Contato
+                  Newsletter
                 </span>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6">
                   Receba atualizações estratégicas da Feronti
