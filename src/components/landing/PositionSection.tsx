@@ -1,11 +1,28 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import conceptData from '@/assets/concept-data.png';
 
 const PositionSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-24 md:py-32 section-dark">
-      <div ref={ref} className="container px-6">
+    <section className="section-dark relative overflow-hidden">
+      {/* Full-width image */}
+      <div 
+        className={`w-full h-64 md:h-80 lg:h-96 relative transition-all duration-1000 ${
+          isVisible ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <img 
+          src={conceptData} 
+          alt="Fluxo de dados digitais" 
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+      </div>
+
+      {/* Content */}
+      <div ref={ref} className="container px-6 py-24 md:py-32">
         <div className="max-w-4xl mx-auto">
           <h3 
             className={`text-sm font-medium text-primary uppercase tracking-widest mb-6 transition-all duration-700 ${
