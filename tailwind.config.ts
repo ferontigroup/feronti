@@ -12,7 +12,8 @@ export default {
         sm: "640px",
         md: "768px",
         lg: "1024px",
-        xl: "1200px",
+        xl: "1280px",
+        "2xl": "1400px",
       },
     },
     extend: {
@@ -60,19 +61,9 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        gold: {
-          DEFAULT: "hsl(45 93% 58%)",
-          dark: "hsl(38 93% 50%)",
-          light: "hsl(45 93% 70%)",
-        },
-        navy: {
-          DEFAULT: "hsl(222 47% 11%)",
-          dark: "hsl(222 47% 6%)",
-          light: "hsl(222 30% 18%)",
-        },
       },
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        sans: ['Segoe UI', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",

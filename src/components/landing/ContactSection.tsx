@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Check } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -21,73 +21,99 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contato" className="py-24 md:py-32 section-light">
+    <section id="contato" className="py-20 md:py-28 section-light">
       <div ref={ref} className="container px-6">
-        <div className="max-w-xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {!isSubmitted ? (
-            <div 
-              className={`transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
-              <h2 className="text-2xl md:text-3xl font-semibold text-[hsl(var(--foreground-light))] mb-4 tracking-tight">
-                Receba atualizações estratégicas da Feronti
-              </h2>
-              <p className="text-light-muted mb-8 leading-relaxed">
-                Acompanhe o que estamos construindo. Compartilhamos análises, lançamentos 
-                e materiais que ajudam a compreender performance digital com mais clareza e critério.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+              {/* Left column - Text */}
+              <div 
+                className={`transition-all duration-700 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+              >
+                <span className="badge-primary mb-6">
+                  Contato
+                </span>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6">
+                  Receba atualizações estratégicas da Feronti
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Acompanhe o que estamos construindo. Compartilhamos análises, lançamentos 
+                  e materiais que ajudam a compreender performance digital com mais clareza e critério.
+                </p>
+              </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Seu nome"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    className="w-full h-12 px-4 rounded-lg bg-[hsl(0_0%_94%)] text-[hsl(var(--foreground-light))] placeholder:text-[hsl(var(--muted-foreground-light))] border-0 focus:outline-none focus:ring-2 focus:ring-primary transition-all"
-                  />
+              {/* Right column - Form */}
+              <div 
+                className={`transition-all duration-700 delay-200 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+              >
+                <div className="card-elevated p-8">
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2">
+                        Seu nome
+                      </label>
+                      <input
+                        id="name"
+                        type="text"
+                        placeholder="Digite seu nome"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        className="w-full h-12 px-4 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+                        Seu e-mail
+                      </label>
+                      <input
+                        id="email"
+                        type="email"
+                        placeholder="Digite seu e-mail"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="w-full h-12 px-4 rounded-lg bg-secondary text-foreground placeholder:text-muted-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={isLoading}
+                      className="w-full h-12 rounded-sm bg-primary text-primary-foreground font-semibold text-sm tracking-wide hover:opacity-90 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                    >
+                      {isLoading ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                          Enviando...
+                        </>
+                      ) : (
+                        <>
+                          Receber atualizações
+                          <ArrowRight className="w-4 h-4" />
+                        </>
+                      )}
+                    </button>
+                  </form>
                 </div>
-                <div>
-                  <input
-                    type="email"
-                    placeholder="Seu e-mail"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="w-full h-12 px-4 rounded-lg bg-[hsl(0_0%_94%)] text-[hsl(var(--foreground-light))] placeholder:text-[hsl(var(--muted-foreground-light))] border-0 focus:outline-none focus:ring-2 focus:ring-primary transition-all"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full h-12 rounded-full bg-primary text-primary-foreground font-medium text-sm uppercase tracking-wider hover:opacity-90 transition-opacity disabled:opacity-50"
-                >
-                  {isLoading ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                      Enviando...
-                    </span>
-                  ) : (
-                    'Receber atualizações'
-                  )}
-                </button>
-              </form>
+              </div>
             </div>
           ) : (
             <div 
-              className={`text-center py-8 transition-all duration-700 ${
+              className={`text-center max-w-xl mx-auto py-12 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
-                <Check className="w-8 h-8 text-primary" />
+              <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-8">
+                <Check className="w-10 h-10 text-primary" />
               </div>
-              <h3 className="text-2xl font-semibold text-[hsl(var(--foreground-light))] mb-4">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 Cadastro realizado com sucesso
               </h3>
-              <p className="text-light-muted">
+              <p className="text-muted-foreground text-lg">
                 Em breve você receberá nossas próximas atualizações.
               </p>
             </div>

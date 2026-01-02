@@ -1,62 +1,80 @@
-import GeometricShapes from './GeometricShapes';
+import { ArrowRight } from 'lucide-react';
+import conceptNetwork from '@/assets/concept-network.png';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden section-dark">
-      {/* Geometric wireframe shapes */}
-      <GeometricShapes />
-
+    <section className="relative min-h-screen section-gradient-dark overflow-hidden">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
+      
       {/* Content */}
-      <div className="container relative z-10 px-6 pt-24 pb-20">
-        <div className="max-w-3xl mx-auto md:mx-0 md:ml-[10%]">
-          {/* Main headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight mb-8 animate-fade-up opacity-0">
-            Clareza estratégica para{' '}
-            <span className="text-gradient-orange">decisões</span> em{' '}
-            <br className="hidden md:block" />
-            performance digital.
-          </h1>
+      <div className="container relative z-10 px-6 pt-28 pb-20 md:pt-36 md:pb-28">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[70vh]">
+          {/* Left column - Text content */}
+          <div className="text-white">
+            {/* Badge */}
+            <div className="mb-6 animate-fade-up opacity-0">
+              <span className="badge-dark">
+                Feronti Group
+              </span>
+            </div>
 
-          {/* Subheadline */}
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mb-10 animate-fade-up opacity-0 stagger-1">
-            A Feronti atua no desenvolvimento de competências estratégicas em performance digital. 
-            Desenvolvemos treinamentos estruturados e frameworks conceituais para apoiar a construção 
-            de raciocínio, leitura de cenário e organização em ambientes onde dados, mídia e comércio se cruzam.
-          </p>
+            {/* Main headline */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6 animate-fade-up opacity-0 stagger-1">
+              Clareza estratégica para{' '}
+              <span className="text-gradient-orange">decisões</span> em performance digital.
+            </h1>
 
-          {/* CTA Button */}
-          <div className="animate-fade-up opacity-0 stagger-2">
-            <a
-              href="#contato"
-              className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-primary text-primary-foreground text-sm font-medium uppercase tracking-wider hover:opacity-90 transition-opacity duration-200"
-            >
-              Saiba mais
-            </a>
+            {/* Subheadline */}
+            <p className="text-lg md:text-xl text-muted-dark leading-relaxed max-w-xl mb-10 animate-fade-up opacity-0 stagger-2">
+              A Feronti atua no desenvolvimento de competências estratégicas em performance digital. 
+              Desenvolvemos treinamentos estruturados e frameworks conceituais para apoiar a construção 
+              de raciocínio, leitura de cenário e organização.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0 stagger-3">
+              <a href="#contato" className="btn-primary">
+                Saiba mais
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
+              <a href="#o-que-fazemos" className="btn-secondary-dark">
+                O que fazemos
+              </a>
+            </div>
+          </div>
+
+          {/* Right column - Image */}
+          <div className="hidden lg:flex items-center justify-center animate-scale-in opacity-0 stagger-2">
+            <img 
+              src={conceptNetwork} 
+              alt="Visualização de rede digital" 
+              className="w-full max-w-lg h-auto"
+              loading="eager"
+            />
           </div>
         </div>
-      </div>
 
-      {/* Scroll indicator badge - bottom right */}
-      <div className="absolute bottom-8 right-8 md:right-16 animate-fade-in opacity-0 stagger-3">
-        <div className="relative w-20 h-20">
-          {/* Rotating text */}
-          <svg className="w-full h-full animate-rotate-slow" viewBox="0 0 100 100">
-            <defs>
-              <path
-                id="circlePath"
-                d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-              />
-            </defs>
-            <text className="text-[8px] uppercase tracking-[0.3em] fill-muted-foreground">
-              <textPath href="#circlePath">
-                ROLE PARA BAIXO • ROLE PARA BAIXO •
-              </textPath>
-            </text>
-          </svg>
-          {/* Center pill */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-4 h-8 rounded-full bg-primary" />
-          </div>
+        {/* Navigation tabs */}
+        <div className="hidden md:flex items-center gap-1 mt-16 pt-8 border-t border-white/10 animate-fade-up opacity-0 stagger-4">
+          {[
+            { href: '#o-que-fazemos', label: 'O que fazemos' },
+            { href: '#abordagem', label: 'Nossa abordagem' },
+            { href: '#para-quem', label: 'Para quem' },
+            { href: '#contato', label: 'Contato' },
+          ].map((tab, index) => (
+            <a
+              key={tab.href}
+              href={tab.href}
+              className={`px-5 py-3 text-sm font-medium transition-colors ${
+                index === 0
+                  ? 'text-white border-b-2 border-primary'
+                  : 'text-muted-dark hover:text-white'
+              }`}
+            >
+              {tab.label}
+            </a>
+          ))}
         </div>
       </div>
     </section>

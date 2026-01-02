@@ -5,35 +5,31 @@ const PositionSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="section-dark relative overflow-hidden">
-      {/* Full-width image */}
-      <div 
-        className={`w-full h-64 md:h-80 lg:h-96 relative transition-all duration-1000 ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
+    <section className="py-20 md:py-28 section-gradient-dark relative overflow-hidden">
+      {/* Background image with overlay */}
+      <div className="absolute inset-0 opacity-20">
         <img 
           src={conceptData} 
-          alt="Fluxo de dados digitais" 
+          alt="" 
           className="w-full h-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[hsl(240_10%_4%)] via-[hsl(240_10%_4%)/80] to-transparent" />
       </div>
 
       {/* Content */}
-      <div ref={ref} className="container px-6 py-24 md:py-32">
-        <div className="max-w-4xl mx-auto">
-          <h3 
-            className={`text-sm font-medium text-primary uppercase tracking-widest mb-6 transition-all duration-700 ${
+      <div ref={ref} className="container px-6 relative z-10">
+        <div className="max-w-4xl mx-auto text-center text-white">
+          <span 
+            className={`badge-dark mb-6 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
             Nossa posição
-          </h3>
+          </span>
 
           <h2 
-            className={`text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight mb-8 transition-all duration-700 delay-100 ${
+            className={`text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-8 transition-all duration-700 delay-100 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
@@ -42,7 +38,7 @@ const PositionSection = () => {
 
           <div className="space-y-6">
             <p 
-              className={`text-lg text-muted-foreground leading-relaxed transition-all duration-700 delay-200 ${
+              className={`text-lg text-muted-dark leading-relaxed transition-all duration-700 delay-200 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
