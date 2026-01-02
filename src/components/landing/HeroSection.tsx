@@ -1,4 +1,3 @@
-import { ArrowRight } from 'lucide-react';
 import conceptNetwork from '@/assets/concept-network.png';
 
 const HeroSection = () => {
@@ -35,8 +34,7 @@ const HeroSection = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0 stagger-3">
               <a href="#contato" className="btn-primary">
-                Saiba mais
-                <ArrowRight className="w-4 h-4 ml-2" />
+                Fale conosco
               </a>
               <a href="#o-que-fazemos" className="btn-secondary-dark">
                 O que fazemos
