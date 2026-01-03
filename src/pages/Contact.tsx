@@ -52,7 +52,6 @@ const Contact = () => {
       });
 
       if (dbError) {
-        console.error('Database error:', dbError);
         throw new Error('Erro ao salvar dados');
       }
 
@@ -68,15 +67,12 @@ const Contact = () => {
         },
       });
 
-      if (emailError) {
-        console.error('Email error:', emailError);
-        // Don't throw - email is secondary
-      }
+      // Email errors are secondary - don't fail the submission
+      // Errors are logged server-side only
 
       setIsSubmitted(true);
       form.reset();
     } catch (error) {
-      console.error('Submission error:', error);
       toast({
         title: 'Erro ao enviar',
         description: 'Tente novamente em alguns instantes.',
