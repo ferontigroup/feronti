@@ -37,8 +37,8 @@ const Footer = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="#contato" className="text-sm text-muted-dark hover:text-white transition-colors">
-                      Contato
+                    <a href="/contato" className="text-sm text-muted-dark hover:text-white transition-colors">
+                      Fale conosco
                     </a>
                   </li>
                 </ul>
@@ -49,12 +49,12 @@ const Footer = () => {
                 </h4>
                 <ul className="space-y-3">
                   <li>
-                    <a href="#" className="text-sm text-muted-dark hover:text-white transition-colors">
+                    <a href="/politica-cookies" className="text-sm text-muted-dark hover:text-white transition-colors">
                       Política de Cookies
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="text-sm text-muted-dark hover:text-white transition-colors">
+                    <a href="/politica-privacidade" className="text-sm text-muted-dark hover:text-white transition-colors">
                       Política de Privacidade
                     </a>
                   </li>
