@@ -21,7 +21,7 @@ const HeroSection = () => {
             {/* Main headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6 animate-fade-up opacity-0 stagger-1">
               Clareza estratégica para{' '}
-              <span className="text-gradient-orange">decisões</span> em performance digital.
+              <span className="text-gradient-primary">decisões</span> em performance digital.
             </h1>
 
             {/* Subheadline */}
