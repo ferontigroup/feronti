@@ -31,13 +31,10 @@ const HeroSection = () => {
               de raciocínio, leitura de cenário e organização.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0 stagger-3">
-              <a href="#contato" className="btn-primary">
-                Fale conosco
-              </a>
-              <a href="#o-que-fazemos" className="btn-secondary-dark">
-                O que fazemos
+            {/* CTA Button */}
+            <div className="animate-fade-up opacity-0 stagger-3">
+              <a href="#newsletter" className="btn-primary">
+                Receba novidades
               </a>
             </div>
           </div>
