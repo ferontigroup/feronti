@@ -1,7 +1,7 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import conceptNetwork from '@/assets/concept-network.png';
-import conceptStructure from '@/assets/concept-structure.png';
-import conceptClarity from '@/assets/concept-clarity.png';
+import organizacoesImage from '@/assets/organizacoes.webp';
+import timesDeMidiaImage from '@/assets/times-de-midia.webp';
+import liderancasImage from '@/assets/liderancas.webp';
 
 const ForWhoSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -10,20 +10,20 @@ const ForWhoSection = () => {
     {
       title: 'Organizações',
       description: 'Que precisam estruturar a leitura de mídia e performance antes de escalar investimentos.',
-      image: conceptNetwork,
-      imageAlt: 'Rede de dados conectados representando organizações'
+      image: organizacoesImage,
+      imageAlt: 'Rede conectada simbolizando estrutura organizacional e escalabilidade em performance digital'
     },
     {
       title: 'Times de mídia',
       description: 'Que operam mídia paga em ambientes complexos e precisam alinhar entendimento, critério e decisão.',
-      image: conceptStructure,
-      imageAlt: 'Estrutura de dados representando times de mídia'
+      image: timesDeMidiaImage,
+      imageAlt: 'Equipe colaborativa em ambiente de operação de mídia paga e performance'
     },
     {
       title: 'Lideranças',
       description: 'Que não precisam aprender ferramentas, mas precisam compreender o que está acontecendo para decidir melhor.',
-      image: conceptClarity,
-      imageAlt: 'Clareza visual representando lideranças'
+      image: liderancasImage,
+      imageAlt: 'Visão executiva e tomada de decisão estratégica em performance digital'
     }
   ];
 
@@ -32,7 +32,7 @@ const ForWhoSection = () => {
       <div ref={ref} className="container px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-20">
+          <header className="text-center mb-20">
             <span 
               className={`badge-primary mb-6 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -57,7 +57,7 @@ const ForWhoSection = () => {
               A Feronti foi construída para contextos em que a complexidade da mídia paga 
               começa a dificultar a leitura, a tomada de decisão e a priorização de investimentos.
             </p>
-          </div>
+          </header>
 
           {/* Zigzag Layout */}
           <div className="space-y-16 md:space-y-24">
@@ -65,7 +65,7 @@ const ForWhoSection = () => {
               const isReversed = index % 2 === 1;
               
               return (
-                <div
+                <article
                   key={audience.title}
                   className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center transition-all duration-700 ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -84,17 +84,21 @@ const ForWhoSection = () => {
 
                   {/* Image */}
                   <div className={`${isReversed ? 'md:order-1' : 'md:order-2'}`}>
-                    <div className="relative overflow-hidden rounded-2xl aspect-[16/10] bg-gradient-to-br from-primary/5 via-accent/10 to-primary/5 group cursor-pointer">
+                    <figure className="relative overflow-hidden rounded-2xl aspect-[16/10] bg-gradient-to-br from-primary/5 via-accent/10 to-primary/5 group cursor-pointer">
                       <img 
                         src={audience.image} 
                         alt={audience.imageAlt}
                         className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                        loading="lazy"
+                        decoding="async"
+                        width={640}
+                        height={400}
                       />
                       {/* Subtle gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 pointer-events-none transition-opacity duration-500 group-hover:opacity-70" />
-                    </div>
+                    </figure>
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>

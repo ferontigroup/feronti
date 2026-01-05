@@ -1,5 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import conceptClarity from '@/assets/concept-clarity.png';
+import nossaFormaDeAtuarImage from '@/assets/nossa-forma-de-atuar.webp';
 
 const OurWaySection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -15,10 +15,13 @@ const OurWaySection = () => {
             }`}
           >
             <img 
-              src={conceptClarity} 
-              alt="Prisma representando clareza estratégica" 
+              src={nossaFormaDeAtuarImage} 
+              alt="Prisma conceitual representando clareza estratégica e transformação de complexidade em entendimento" 
               className="w-full max-w-md mx-auto lg:max-w-none h-auto"
               loading="lazy"
+              decoding="async"
+              width={600}
+              height={450}
             />
           </div>
 

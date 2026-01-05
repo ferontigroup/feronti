@@ -1,33 +1,37 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import conceptClarity from '@/assets/concept-clarity.png';
-import conceptStructure from '@/assets/concept-structure.png';
-import conceptData from '@/assets/concept-data.png';
-import conceptNetwork from '@/assets/concept-network.png';
+import retailMediaImage from '@/assets/retail-media.webp';
+import frameworksImage from '@/assets/frameworks.webp';
+import analiseImage from '@/assets/analise.webp';
+import capacitacaoImage from '@/assets/capacitacao.webp';
 
 const WhatWeDoSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   const cards = [
     {
-      image: conceptClarity,
+      image: retailMediaImage,
+      imageAlt: 'Diagrama conceitual de estratégia de retail media e performance digital',
       tag: 'Retail Media',
       title: 'Leitura estratégica de mídia e performance',
       description: 'Entendimento de cenários complexos em ambientes de retail e D2C.'
     },
     {
-      image: conceptStructure,
+      image: frameworksImage,
+      imageAlt: 'Estrutura visual de frameworks para organização do pensamento em performance',
       tag: 'Frameworks',
       title: 'Organização do pensamento em performance',
       description: 'Estruturas conceituais para análise e tomada de decisão.'
     },
     {
-      image: conceptData,
+      image: analiseImage,
+      imageAlt: 'Representação gráfica de análise de dados e métricas de investimento',
       tag: 'Análise',
       title: 'Interpretação de dados e investimento',
       description: 'Clareza na relação entre métricas, resultados e retorno.'
     },
     {
-      image: conceptNetwork,
+      image: capacitacaoImage,
+      imageAlt: 'Ilustração de desenvolvimento de competências e treinamento de times',
       tag: 'Capacitação',
       title: 'Desenvolvimento de competências',
       description: 'Treinamentos estruturados para times e lideranças.'
@@ -60,7 +64,7 @@ const WhatWeDoSection = () => {
         {/* Cards grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {cards.map((card, index) => (
-            <div
+            <article
               key={card.title}
               className={`card-elevated p-6 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -71,9 +75,12 @@ const WhatWeDoSection = () => {
               <div className="aspect-square mb-6 rounded-lg overflow-hidden bg-secondary">
                 <img 
                   src={card.image} 
-                  alt={card.title}
+                  alt={card.imageAlt}
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  decoding="async"
+                  width={400}
+                  height={400}
                 />
               </div>
 
@@ -91,7 +98,7 @@ const WhatWeDoSection = () => {
               <p className="text-sm text-muted-foreground">
                 {card.description}
               </p>
-            </div>
+            </article>
           ))}
         </div>
 

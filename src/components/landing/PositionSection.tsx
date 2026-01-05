@@ -1,5 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import conceptData from '@/assets/concept-data.png';
+import nossaPosicaoImage from '@/assets/nossa-posicao.webp';
 
 const PositionSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -9,10 +9,12 @@ const PositionSection = () => {
       {/* Background image with overlay */}
       <div className="absolute inset-0 opacity-20">
         <img 
-          src={conceptData} 
-          alt="" 
+          src={nossaPosicaoImage} 
+          alt="Background abstrato representando organização do pensamento em mídia e dados" 
           className="w-full h-full object-cover"
           loading="lazy"
+          decoding="async"
+          aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[hsl(240_10%_4%)] via-[hsl(240_10%_4%)/80] to-transparent" />
       </div>

@@ -1,4 +1,4 @@
-import conceptNetwork from '@/assets/concept-network.png';
+import heroImage from '@/assets/hero.webp';
 
 const HeroSection = () => {
   return (
@@ -45,10 +45,13 @@ const HeroSection = () => {
           {/* Right column - Image */}
           <div className="hidden lg:flex items-center justify-center animate-scale-in opacity-0 stagger-2">
             <img 
-              src={conceptNetwork} 
-              alt="Visualização de rede digital" 
+              src={heroImage} 
+              alt="Visualização abstrata de rede digital representando clareza estratégica em performance" 
               className="w-full max-w-lg h-auto"
               loading="eager"
+              decoding="async"
+              width={800}
+              height={600}
             />
           </div>
         </div>
