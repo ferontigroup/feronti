@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="Camada_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 30 30">
-  <!-- Generator: Adobe Illustrator 30.0.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 123)  -->
+  <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
   <defs>
     <style>
-      .st0 {
+      .st0, .st1 {
+        isolation: isolate;
+      }
+
+      .st2 {
         fill: #141113;
       }
 
       .st1 {
-        fill: #ec681d;
+        fill: #e11d44;
         font-family: SourceSansPro-Semibold, 'Source Sans Pro';
-        font-size: 23.12px;
+        font-size: 14.63px;
         font-weight: 600;
-        isolation: isolate;
         letter-spacing: -.02em;
       }
     </style>
   </defs>
-  <rect class="st0" x="0" y="-.65" width="30" height="31.31"/>
-  <text class="st1" transform="translate(2.61 21.4)"><tspan x="0" y="0">on</tspan></text>
+  <rect class="st2" y="-.65" width="30" height="31.31"/>
+  <g class="st0">
+    <text class="st1" transform="translate(2.8 20.25)"><tspan x="0" y="0">f.On</tspan></text>
+  </g>
 </svg>
