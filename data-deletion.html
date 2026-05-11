@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exclusão de Dados — Feronti Marketing Cloud</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f171d;
+    --surface: #181e24;
+    --surface2: #1e252d;
+    --border: rgba(255,255,255,0.07);
+    --orange: #f97316;
+    --orange-dim: rgba(249,115,22,0.12);
+    --text: #e8eaed;
+    --text-muted: #8a9198;
+    --text-dim: #5a636b;
+    --red: #ef4444;
+    --red-dim: rgba(239,68,68,0.1);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+    min-height: 100vh;
+  }
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 56px;
+  }
+  .logo-mark {
+    width: 28px;
+    height: 28px;
+    background: var(--orange);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .brand {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .brand span { color: var(--text-muted); font-weight: 400; }
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+  .page-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--orange-dim);
+    border: 1px solid rgba(249,115,22,0.2);
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.3px;
+  }
+  .page-meta {
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .page-meta strong { color: var(--text); font-weight: 500; }
+  section { margin-bottom: 2.5rem; }
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 16px;
+    background: var(--orange);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  p { color: var(--text-muted); margin-bottom: 0.75rem; }
+  p:last-child { margin-bottom: 0; }
+  ul { list-style: none; padding: 0; margin-bottom: 0.75rem; }
+  ul li {
+    color: var(--text-muted);
+    padding: 4px 0 4px 18px;
+    position: relative;
+  }
+  ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-weight: 500;
+  }
+  a { color: var(--orange); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Steps */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+  }
+  .step-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--orange-dim);
+    border: 1px solid rgba(249,115,22,0.3);
+    color: var(--orange);
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .step-content p {
+    font-size: 13px;
+    margin: 0;
+  }
+
+  /* Alert */
+  .alert {
+    background: var(--red-dim);
+    border: 1px solid rgba(239,68,68,0.2);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .alert-icon {
+    color: var(--red);
+    font-size: 18px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .alert p {
+    color: #f87171;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* Email button */
+  .email-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: opacity 0.15s;
+  }
+  .email-btn:hover { opacity: 0.88; text-decoration: none; }
+
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 1rem;
+  }
+  .contact-card p { margin-bottom: 0.4rem; }
+
+  .data-list {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+  }
+  .data-list ul { margin: 0; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    text-align: center;
+    padding: 1.5rem 2rem;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo-mark">F</div>
+    <span class="brand">Feronti Marketing Cloud <span>/ Legal</span></span>
+  </div>
+</header>
+<main>
+  <div class="page-header">
+    <div class="page-tag">Privacidade & Dados</div>
+    <h1>Exclusão de Dados do Usuário</h1>
+    <p class="page-meta">
+      <strong>Feronti Marketing Cloud</strong> &nbsp;·&nbsp; Última atualização: <strong>maio de 2025</strong>
+    </p>
+  </div>
+
+  <section>
+    <h2>Seu direito à exclusão de dados</h2>
+    <p>De acordo com a Lei Geral de Proteção de Dados (LGPD) e as políticas da Meta Platforms, você tem o direito de solicitar a exclusão completa dos seus dados pessoais e dos dados da sua empresa armazenados na plataforma Feronti Marketing Cloud.</p>
+    <p>Esta página explica o que é excluído, o que é retido por obrigação legal e como solicitar a exclusão.</p>
+  </section>
+
+  <section>
+    <h2>Como solicitar a exclusão</h2>
+    <p>Existem duas formas de solicitar a exclusão dos seus dados:</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Pela própria plataforma (recomendado)</h3>
+          <p>Acesse <strong>Configurações → Conta → Excluir Conta</strong>. O processo é imediato e elimina automaticamente seus dados pessoais, integrações e relatórios associados à conta.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Por e-mail</h3>
+          <p>Envie uma solicitação formal para <a href="mailto:privacidade@feronti.com.br">privacidade@feronti.com.br</a> com o assunto <strong>"Solicitação de Exclusão de Dados"</strong>, informando o e-mail cadastrado na conta. Responderemos em até 5 dias úteis.</p>
+        </div>
+      </div>
+    </div>
+
+    <a class="email-btn" href="mailto:privacidade@feronti.com.br?subject=Solicita%C3%A7%C3%A3o%20de%20Exclus%C3%A3o%20de%20Dados">
+      Enviar solicitação por e-mail
+    </a>
+  </section>
+
+  <section>
+    <h2>O que é excluído</h2>
+    <p>Ao confirmar a exclusão, removeremos permanentemente:</p>
+    <div class="data-list">
+      <ul>
+        <li>Dados de cadastro: nome, e-mail e informações da empresa.</li>
+        <li>Tokens de autenticação e credenciais das integrações conectadas (Meta Ads, Google Ads, GA4, Shopify).</li>
+        <li>Histórico de métricas, relatórios e dashboards gerados na plataforma.</li>
+        <li>Configurações de campanhas, metas e preferências da conta.</li>
+        <li>Dados de subdomain white label e customizações associadas.</li>
+        <li>Logs de sessão e dados de uso da plataforma.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>O que não podemos excluir imediatamente</h2>
+    <div class="alert">
+      <div class="alert-icon">⚠</div>
+      <p>Dados de faturamento e registros de transações financeiras podem ser retidos por até 5 anos para cumprimento de obrigações legais fiscais, conforme a legislação brasileira. Esses dados não são usados para qualquer finalidade comercial.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Prazo de exclusão</h2>
+    <p>A exclusão é processada conforme o método utilizado:</p>
+    <ul>
+      <li><strong>Pela plataforma:</strong> imediata para dados ativos; backups eliminados em até 30 dias.</li>
+      <li><strong>Por e-mail:</strong> confirmada em até 5 dias úteis após verificação da identidade; execução em até 15 dias corridos.</li>
+    </ul>
+    <p>Você receberá uma confirmação por e-mail assim que a exclusão for concluída.</p>
+  </section>
+
+  <section>
+    <h2>Dados de integrações com Meta</h2>
+    <p>A solicitação de exclusão via Feronti encerra a conexão entre sua conta e os ativos de Meta Ads. Para revogar permissões diretamente na Meta, acesse:</p>
+    <ul>
+      <li><a href="https://www.facebook.com/settings?tab=applications" target="_blank">facebook.com/settings → Aplicativos e Sites</a></li>
+      <li>Localize "Feronti Marketing Cloud" e clique em "Remover".</li>
+    </ul>
+    <p>A revogação direta na Meta garante que nenhum dado adicional seja transmitido, independentemente do status da conta na nossa plataforma.</p>
+  </section>
+
+  <section>
+    <h2>Contato</h2>
+    <p>Para dúvidas sobre exclusão de dados ou para acompanhar o status de uma solicitação:</p>
+    <div class="contact-card">
+      <p><strong>Feronti Marketing Cloud — Privacidade</strong></p>
+      <p>E-mail: <a href="mailto:privacidade@feronti.com.br">privacidade@feronti.com.br</a></p>
+      <p>Site: <a href="https://feronti.com.br" target="_blank">feronti.com.br</a></p>
+    </div>
+  </section>
+</main>
+<footer>
+  &copy; 2025 Feronti Marketing Cloud. Todos os direitos reservados.
+</footer>
+</body>
+</html>
